@@ -14,11 +14,11 @@ const Layout = () => {
                 `}>
                 {/* Sidebar (Fixed) */}
 
-                <Navbar isOpen={isOpen} setIsOpen={setIsOpen} darkMode={darkMode} setDarkMode={setDarkMode} />
+                {/* <Navbar isOpen={isOpen} setIsOpen={setIsOpen} darkMode={darkMode} setDarkMode={setDarkMode} /> */}
 
                 {/* Main Content Section */}
                 <main className={`flex-1
-                    ${darkMode ? "bg-gray-700 border-gray-300" : "bg-gray-100 border-orange-400"}
+                    ${darkMode ? "bg-gray-700 border-gray-300 text-white" : "bg-gray-100 text-black border-orange-400"}
                     overflow-y-auto `}>
                     <Outlet context={{ darkMode, setDarkMode }} />
                 </main>
