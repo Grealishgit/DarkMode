@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import { FaToggleOff, FaToggleOn } from "react-icons/fa";
+import { FaToggleOff, FaToggleOn, FaUserAlt } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { SlBasket } from "react-icons/sl";
 
 const Navbar = ({ darkMode, setDarkMode }) => {
     const [activeTab, setActiveTab] = useState('Home');
@@ -45,9 +46,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                     ))}
                 </ul>
 
-                <div className='flex mr-6'>
+                <div className='flex items-center gap-4 mr-6'>
                     {!darkMode ? <FaToggleOff onClick={() => setDarkMode(true)} className='w-auto md:block hidden cursor-pointer h-7' />
-                        : <FaToggleOn onClick={() => setDarkMode(false)} className='w-auto md:block hidden cursor-pointer h-7' />}
+                        : <FaToggleOn onClick={() => setDarkMode(false)} className='w-auto md:block hidden cursor-pointer h-7' />}               
+                    <div className='border-r-4 hidden md:block border-[#FFA07A] h-[20px]' ></div>
+                    <SlBasket className='w-auto h-7 cursor-pointer hover:text-[#FFA07A]' />
+                    <div className='border-r-4 border-[#FFA07A] h-[20px]' ></div>
+                    <FaUserAlt className='w-auto h-7 cursor-pointer hover:text-[#FFA07A]' />
+                    <div className='border-r-4 md:hidden block border-[#FFA07A] h-[20px]' ></div>
                     <IoMenu onClick={() => setSidebar(true)} className='w-auto h-7 cursor-pointer md:hidden block' />
                 </div>
 
