@@ -3,10 +3,20 @@ import logo from '../assets/logo.png';
 import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = ({ darkMode, setDarkMode }) => {
     const [activeTab, setActiveTab] = useState('Home');
     const [sidebar, setSidebar] = useState(false);
+    const navigate = useNavigate();
+
+    const tabRoutes = {
+        'Home': '/',
+        'Homes': '/homes',
+        'About Us': '/about',
+        'Contact Us': '/contact'
+    };
+
 
     return (
         <nav className={`w-full ${darkMode ? 'bg-gray-800 text-white shadow-md' : 'bg-gray-200 shadow-md text-gray-900'} fixed z-50 md:py-3 py-2`}>
@@ -14,15 +24,19 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                 {/* Logo on the left */}
                 <div className="flex  items-center gap-2">
                     <img src={logo} alt="Logo" className="h-10 cursor-pointer rounded-full w-auto object-contain" />
-                    <span className="text-xl cursor-pointer font-bold">Test-<span className='text-[#FFA07A]'>Site</span> </span>
+                    <span className="text-xl cursor-pointer font-bold">Shalom-<span className='text-[#FFA07A]'>Homes</span> </span>
                 </div>
 
                 {/* Nav links */}
                 <ul className="md:flex hidden gap-6">
-                    {['Home', 'Product', 'About', 'Contact'].map((tab) => (
+                    {['Home', 'Homes', 'About Us', 'Contact Us'].map((tab) => (
                         <li
                             key={tab}
-                            onClick={() => setActiveTab(tab)}
+                            onClick={() => {
+                                setActiveTab(tab);
+                                navigate(tabRoutes[tab]);
+                            }}
+
                             className={`text-lg font-semibold  cursor-pointer ${activeTab === tab ? 'border-b-4 border-[#FFA07A] -pb-2' : ''
                                 }`}
                         >
@@ -45,10 +59,14 @@ const Navbar = ({ darkMode, setDarkMode }) => {
                             <IoMdClose onClick={() => setSidebar(false)} className='w-auto h-7 mt-4 ml-4' />
                         </div>
                         <ul className="flex flex-col items-center  gap-6">
-                            {['Home', 'Product', 'About', 'Contact'].map((tab) => (
+                            {['Home', 'Homes', 'About Us', 'Contact Us'].map((tab) => (
                                 <li
                                     key={tab}
-                                    onClick={() => setActiveTab(tab)}
+                                    onClick={() => {
+                                        setActiveTab(tab);
+                                        navigate(tabRoutes[tab]);
+                                    }}
+
                                     className={`text-lg font-semibold  cursor-pointer ${activeTab === tab ? 'border-b-4 border-[#FFA07A] -pb-2' : ''
                                         }`}
                                 >
